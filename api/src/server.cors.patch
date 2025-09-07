@@ -1,0 +1,17 @@
+*** Begin Patch
+*** Update File: api/src/server.js
+@@
+-const app = express();
+-const PORT = Number(process.env.PORT || 4000);
+-app.use(cors({ origin: process.env.CORS_ORIGIN || '*' }));
++const app = express();
++const PORT = Number(process.env.PORT || 4000);
++// CORS sólido para frontend em outra origem (3001)
++app.use(cors({
++  origin: (origin, cb) => cb(null, true), // espelha qualquer origem
++  methods: ['GET','POST','OPTIONS'],
++  allowedHeaders: ['Content-Type','Authorization'],
++  credentials: false
++}));
++app.options('*', cors());
+*** End Patch

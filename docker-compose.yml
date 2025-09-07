@@ -1,0 +1,35 @@
+services:
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+
+  api:
+    build:
+      context: ./api
+      dockerfile: ../Dockerfile
+    command: ["node","src/server.js"]
+    env_file: ./api/.env
+    depends_on: [redis]
+    ports: ["4000:4000"]
+    volumes:
+      - ./api/storage:/app/storage
+    restart: unless-stopped
+
+  worker:
+    build:
+      context: ./worker
+      dockerfile: ../Dockerfile
+    command: ["node","src/worker.js"]
+    env_file: ./api/.env
+    depends_on: [redis, api]
+    volumes:
+      - ./api/storage:/app/storage
+    restart: unless-stopped
+
+  web:
+    build:
+      context: ./web
+      dockerfile: Dockerfile.web
+    depends_on: [api]
+    ports: ["3001:80"]
+    restart: unless-stopped

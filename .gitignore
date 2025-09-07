@@ -1,0 +1,5 @@
+**/node_modules/
+api/storage/uploads/
+api/storage/outputs/
+api/storage/tmp/
+api/.env

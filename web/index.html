@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>FileX Converter</title>
+    <link rel="icon" href="/favicon.ico">
+    <style>
+      :root{ --bg:#0f172a; --card:#111827; --muted:#94a3b8; --pri:#22d3ee; --ok:#34d399; --err:#fb7185; --txt:#e5e7eb; }
+      *{ box-sizing:border-box; } body{ margin:0; background:linear-gradient(120deg,#0f172a,#020617); color:var(--txt); font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto; }
+      .wrap{ max-width:900px; margin:40px auto; padding:20px; }
+      .card{ background:rgba(17,24,39,.7); backdrop-filter: blur(8px); border:1px solid rgba(255,255,255,.06); border-radius:20px; padding:24px; box-shadow:0 10px 30px rgba(0,0,0,.3); }
+      h1{ margin:0 0 12px; font-size:28px; letter-spacing:.2px }
+      p.muted{ color:var(--muted); margin-top:0 }
+      .row{ display:grid; grid-template-columns:1fr 180px; gap:12px; align-items:center; margin:10px 0 6px }
+      .ctl{ display:flex; gap:10px; align-items:center; }
+      input[type=file], select{ width:100%; background:#0b1220; color:var(--txt); border:1px solid #1f2937; border-radius:12px; padding:10px 12px; }
+      button{ background:linear-gradient(90deg,#06b6d4,#22d3ee); color:#002; border:0; padding:10px 16px; border-radius:12px; font-weight:700; cursor:pointer; }
+      button:disabled{ filter:grayscale(1); opacity:.6; cursor:not-allowed }
+      .status{ margin-top:14px; display:flex; gap:10px; align-items:center }
+      .pill{ padding:6px 10px; border-radius:999px; font-size:12px; background:#0b1220; border:1px solid #1f2937 }
+      .pill.ok{ border-color:#064e3b; color:#bbf7d0; }
+      .pill.err{ border-color:#7f1d1d; color:#fecaca; }
+      .bar{ width:100%; height:8px; background:#0b1220; border:1px solid #1f2937; border-radius:999px; overflow:hidden }
+      .bar > i{ display:block; height:100%; width:0%; background:linear-gradient(90deg,#06b6d4,#22d3ee); transition:width .3s }
+      .jobs{ margin-top:18px; display:grid; gap:8px }
+      .job{ padding:10px 12px; background:#0b1220; border:1px solid #1f2937; border-radius:12px; display:flex; justify-content:space-between; align-items:center }
+      a.btn{ color:#001; background:linear-gradient(90deg,#10b981,#34d399); padding:8px 12px; border-radius:10px; text-decoration:none; font-weight:700 }
+      small{ color:var(--muted) }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

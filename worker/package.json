@@ -1,0 +1,15 @@
+{
+  "name": "filex-converter-worker",
+  "version": "1.0.0",
+  "private": true,
+  "type": "commonjs",
+  "main": "src/worker.js",
+  "scripts": { "start": "node src/worker.js" },
+  "dependencies": {
+    "bullmq": "^5.7.8",
+    "dotenv": "^16.4.5",
+    "ioredis": "^5.4.1",
+    "sharp": "^0.33.4",
+    "xlsx": "0.18.5"
+  }
+}

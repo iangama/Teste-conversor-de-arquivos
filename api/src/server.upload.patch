@@ -1,0 +1,18 @@
+*** Begin Patch
+*** Update File: api/src/server.js
+@@
+-app.post('/upload', upload.single('file'), async (req,res)=>{
++app.post('/upload', upload.single('file'), async (req,res)=>{
+   try{
+@@
+-    await queue.add('convert', { id, srcPath, originalName:file.originalname, target }, { jobId:id });
++    // tenta enfileirar — se Redis estiver fora, cai no catch com erro claro
++    await queue.add('convert', { id, srcPath, originalName:file.originalname, target }, { jobId:id });
+     res.status(202).json({ jobId:id });
+   }catch(e){
+-    console.error(e); res.status(500).json({ error:'Falha ao criar job' });
++    console.error('[UPLOAD ERROR]', e?.message || e);
++    res.status(500).json({ error:'Falha ao criar job', detail: String(e?.message || e) });
+   }
+ });
+*** End Patch
